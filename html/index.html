@@ -1,0 +1,30 @@
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Play Higher or Lower!</title>
+    <link rel="stylesheet" type="text/css" href="../css.css" />
+  </head>
+
+  <body>
+    <div class="banner"><img id="logo" src="../img/banner.png" /></div>
+    <div id="mainContainer">
+      <div id="cardDisplay">
+        <div class="cardHolder" id="card1"><img id="slot1" /></div>
+        <div class="cardHolder" id="card2"><img id="slot2" /></div>
+        <div class="cardHolder" id="card3"><img id="slot3" /></div>
+        <div class="cardHolder" id="card4"><img id="slot4" /></div>
+        <div class="cardHolder" id="card5"><img id="slot5" /></div>
+        <div class="cardHolder" id="card6"><img id="slot6" /></div>
+      </div>
+      <div id="buttonBoxes">
+        <button id="startGame" onclick="restartFunction()">Start</button>
+        <button id="buttonGuessLower"><p>Guess lower</p></button>
+        <button id="buttonGuessHigher"><p>Guess higher</p></button>
+      </div>
+    </div>
+    <div id="resultsBar">
+      <div class="text" id="textDisplay"></div>
+    </div>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+* {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+body {
+  font-style: normal;
+  margin: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../higherOrLowerBrowser/img/Las-Vegas-background.jpg);
+}
+
+.banner {
+  padding: 20px 20px 0px 20px;
+}
+
+button {
+  width: 15vw;
+  height: 10vh;
+  margin: 10px 0px;
+  font-size: 1rem;
+  text-align: center;
+  background: #777777;
+}
+
+button:hover {
+  background: #999999;
+}
+
+#buttonBoxes {
+  display: flex;
+  flex-direction: column;
+  /* height: 40vh; */
+  padding: 5vh 2vw;
+  /* margin: 5vh 0px 0px 0px; */
+}
+
+#cardDisplay {
+  display: inline-flex;
+  /* height: 20vh; */
+  width: 80%;
+  padding: 5vh 2vw;
+  /* margin: 5vh 0px 0px 0px; */
+}
+
+.cardHolder {
+  width: 12vw;
+  height: 35vh;
+  margin: auto;
+  border-color: black;
+  border: solid;
+}
+
+img {
+  width: 12vw;
+  height: 35vh;
+}
+
+#logo {
+  width: 100%;
+  height: 200px;
+}
+
+#mainContainer {
+  height: 40vh;
+  margin: 10px;
+  display: flex;
+}
+
+#resultsBar {
+  margin: auto;
+  height: 8rem;
+  width: 70vw;
+  border-color: black;
+  border: solid;
+  background-color: antiquewhite;
+}
+
+.text {
+  font-size: 30px;
+  text-align: center;
+  color: goldenrod;
+  padding: 40px;
+}
