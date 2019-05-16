@@ -10,11 +10,15 @@ const messages = {
   lose: "You lost the game! Press Start button to play again",
   win: "You won the game!"
 };
-
 const suits = ["S", "H", "C", "D"];
 const values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-
 let deck = [];
+let turn = 1;
+let newCard;
+let newCardVal;
+let lastCard;
+let lost = false;
+messageBar.innerHTML = messages.Welcome;
 
 function createDeck() {
   for (i = 0; i < suits.length; i++) {
@@ -30,22 +34,24 @@ function createDeck() {
 }
 createDeck();
 
-let turn = 1;
-let newCard;
-let newCardVal;
-let lastCard;
-let lost = false;
-messageBar.innerHTML = messages.Welcome;
+const resetClassName = () => {
+  setTimeout(function() {
+    slot1.className = " ";
+  }, 1900);
+};
 
 const badGuess = () => {
   if (lost == true) {
     messageBar.innerHTML = messages.lose;
+    turn = 7;
   }
 };
 
 const won = () => {
   if (turn == 7 && lost == false) {
     messageBar.innerHTML = messages.win;
+  } else if (turn < 7 && lost == false) {
+    messageBar.innerHTML = messages.correct;
   }
 };
 
@@ -66,59 +72,73 @@ const pickRandomCard = () => {
 };
 
 StartGameButton.addEventListener("click", function() {
+  resetGame();
+  messageBar.innerHTML = messages.start;
   lost = false;
   turn = 1;
   lastCard = null;
-  let initial = pickRandomCard();
-  document.getElementById("slot1").src = `${initial.pic}`;
-  turn++;
-  lastCard = initial;
-  messageBar.innerHTML = messages.start;
+  slot1.className = "zoom";
+  setTimeout(function() {
+    let initial = pickRandomCard();
+    document.getElementById("slot1").src = `${initial.pic}`;
+    turn++;
+    lastCard = initial;
+  }, 1000);
+  resetClassName();
 });
 
 GuessLowerButton.addEventListener("click", function() {
-  if (lost == false) {
+  let element = document.getElementById(`slot${turn}`);
+  element.className = "zoom";
+  setTimeout(function() {
     newCard = pickRandomCard();
     document.getElementById(`slot${turn}`).src = `${newCard.pic}`;
     turn++;
-    if (newCard.value < lastCard.value) {
-      messageBar.innerHTML = messages.correct;
-      console.log("you got it right!");
-    } else {
-      messageBar.innerHTML = messages.lose;
-      lost = true;
+    if (lost == false) {
+      if (newCard.value < lastCard.value) {
+        messageBar.innerHTML = messages.correct;
+      } else {
+        messageBar.innerHTML = messages.lose;
+        lost = true;
+      }
+      lastCard = newCard;
+      badGuess();
+      won();
     }
-    lastCard = newCard;
-    badGuess();
-    won();
-  }
+  }, 1000);
 });
 
 GuessHigherButton.addEventListener("click", function() {
-  if (lost == false) {
+  let element = document.getElementById(`slot${turn}`);
+  element.className = "zoom";
+  setTimeout(function() {
     newCard = pickRandomCard();
     document.getElementById(`slot${turn}`).src = `${newCard.pic}`;
     turn++;
-    if (newCard.value > lastCard.value) {
-      messageBar.innerHTML = messages.correct;
-    } else {
-      messageBar.innerHTML = messages.lose;
-      lost = true;
+    if (lost == false) {
+      if (newCard.value > lastCard.value) {
+        messageBar.innerHTML = messages.correct;
+      } else {
+        messageBar.innerHTML = messages.lose;
+        lost = true;
+      }
+      lastCard = newCard;
+      badGuess();
+      won();
     }
-    lastCard = newCard;
-    badGuess();
-    won();
-  }
+  }, 1000);
 });
 
-const restartFunction = () => {
+const resetGame = () => {
   deck = [];
   createDeck();
   turn = 1;
   lastCard = null;
-  messageBar.innerHTML = "";
   for (i = 1; i < 7; i++) {
-    document.getElementById(`slot${i}`).src = " ";
+    document.getElementById(`slot${i}`).src = "../img/purple_back.png";
+    document.getElementById(`slot${i}`).className = " ";
   }
   console.log(deck);
 };
+
+resetGame();
