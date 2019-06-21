@@ -8,7 +8,7 @@ body {
   margin: 0px;
   width: 100vw;
   height: 100vh;
-  background-image: url(../higherOrLowerBrowser/img/Las-Vegas-background.jpg);
+  background-image: url(./img/Las-Vegas-background.jpg)
 }
 
 .banner {
@@ -92,9 +92,11 @@ img {
   0% {
     top: -20px;
   }
+
   50% {
     top: 20px;
   }
+
   100% {
     top: -20px;
   }
@@ -104,9 +106,11 @@ img {
   0% {
     transform: scale(1, 1);
   }
+
   50% {
     transform: scale(1.2, 1.2);
   }
+
   100% {
     transform: scale(1, 1);
   }
